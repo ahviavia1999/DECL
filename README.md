@@ -1,26 +1,18 @@
-### A dual-encoder contrastive learning framework for robust and interpretable molecular property prediction
+# A dual-encoder contrastive learning framework for robust and interpretable molecular property prediction
 
-目录介绍：
+### Table of Contents Introduction:
 
-- gt_pyg.py是Graph Transformer的代码。
+- `gt_pyg.py` contains the code for the Graph Transformer.
+- `data_tool.py` includes code related to molecular operations, such as dividing substructures and constructing molecular graphs.
+- `dataset.py` is the Dataset required for the training and fine-tuning processes.
+- `finetune_class.py` is the training code for downstream classification tasks in molecular property prediction.
+- `finetune_reg.py` is the training code for downstream regression tasks in molecular property prediction.
+- `loss.py` holds the code for multi-task loss calculation.
+- `model_new.py` contains the code for the fuzzy graph encoder and multi-scale substructure encoder.
+- `pretrain_singleGPU.py` is the model pre-training code for use on a single GPU.
+- `pubchemfp.py` is used to obtain PubChem fingerprints of molecules.
 
-- data_tool.py是与分子操作相关的代码，例如划分子结构、构建分子图等。
-
-- dataset.py是训练和微调过程需要用到的Dataset。
-
-- finetune_class.py是分子性质预测下游分类任务的训练代码。
-
-- finetune_reg.py是分子性质预测下游回归任务的训练代码。
-
-- loss.py是多任务损失代码。
-
-- model_new.py是模糊图编码器和多尺度子结构编码器代码。
-
-- pretrain_singleGPU.py是在单GPU上的模型预训练代码。
-
-- pubchemfp.py是用于获取分子的pubchem指纹。
-
-运行环境如下:
+### The operating environment is as follows:
 
 ```
 absl-py @ file:///home/conda/feedstock_root/build_artifacts/absl-py_1751547525079/work
@@ -188,23 +180,21 @@ yarl==1.18.3
 zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1749421620841/work
 ```
 
+### How to Use
 
-
-使用介绍：
-
-模型预训练通过以下语句执行：
+Model pre-training is executed via the following command:
 
 ```python
 python pretrain_singleGPU.py
 ```
 
-下游分类任务微调通过以下语句执行：
+Fine-tuning for downstream classification tasks is executed via the following command:
 
 ```python
 python finetune_class.py
 ```
 
-下游回归任务微调通过以下语句执行：
+Fine-tuning for downstream regression tasks is executed via the following command:
 
 ```python
 python finetune_reg.py
